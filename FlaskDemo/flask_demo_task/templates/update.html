@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% if not record %}
+<form method='POST' action=''>
+    Enter email: <input type='text' name='email' />
+    <input type='submit'>
+</form>
+{% else %}
+<div class='content-section'>
+    <form method='POST' action="">
+        {{ form.hidden_tag() }}
+        <fieldset class='form-group'>
+            <legend class='border-bottom mb-4'>Enter details</legend>
+            <div class='form-group'>
+                {{ form.name.label(class='form-control-label') }}
+                {% if form.name.errors %}
+                        {{ form.name(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                    {{ form.name(class='form-control form-control-lg value={{ data.name }}') }}
+                {% endif %}
+            </div>
+            <div class='form-group'>
+                {{ form.email.label(class='form-control-label') }}
+                {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                    {{ form.email(class='form-control form-control-lg value={{ data.email }}') }}
+                {% endif %}
+            </div>
+            <div class='form-group'>
+                {{ form.company.label(class='form-control-label') }}
+                {% if form.company.errors %}
+                        {{ form.company(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.company.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                    {{ form.company(class='form-control form-control-lg value={{ date.company }}') }}
+                {% endif %}
+            </div>
+            <div class='form-group'>
+                {{ form.mobile_no.label(class='form-control-label') }}
+                {% if form.mobile_no.errors %}
+                        {{ form.mobile_no(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.mobile_no.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                {% else %}
+                    {{ form.mobile_no(class='form-control form-control-lg value={{ data.mobile_no }}') }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class='form-group'>
+            {{ form.submit(class='btn btn-outline-info')}}
+        </div>
+    </form>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Company</th>
+            <th scope="col">Mobile Number</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+          <tr>
+            <td scope="row">{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.company }}</td>
+            <td>{{ user.mobile_no }}</td>
+          </tr>
+         {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
